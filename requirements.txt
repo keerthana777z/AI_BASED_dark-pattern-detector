@@ -1,0 +1,7 @@
+# For web scraping and browser automation
+selenium
+beautifulsoup4
+webdriver-manager
+
+# For general data handling (we'll use this later)
+pandas
