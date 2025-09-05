@@ -4,7 +4,7 @@ An AI-powered tool that uses BERT (Bidirectional Encoder Representations from Tr
 
 ## 🎯 Features
 
-- **Multi-class Classification**: Detects various types of dark patterns including:
+- **Multi-class Classification**: Detects various types of dark patterns including :
   - **Scarcity**: "Only 2 items left in stock!"
   - **Urgency**: "This offer expires in 5 minutes!"
   - **Social Proof**: "500 people bought this today!"
