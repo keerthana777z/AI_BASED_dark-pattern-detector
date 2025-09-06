@@ -1,7 +1,7 @@
 # 🕵️ Dark Pattern Detector
 
 An AI-powered tool that uses BERT (Bidirectional Encoder Representations from Transformers) to detect and classify dark patterns in text. Dark patterns are manipulative design techniques used in websites and apps to trick users into unintended actions.
-hi this is keert
+hi this is keer
 
 ## 🎯 Features
 
