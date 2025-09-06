@@ -9,7 +9,7 @@ An AI-powered tool that uses BERT (Bidirectional Encoder Representations from Tr
   - **Urgency**: "This offer expires in 5 minutes!"
   - **Social Proof**: "500 people bought this today!"
   - **Misdirection**: "No, I don't want to save money"
-  - And more...
+
 
 - **High Accuracy**: Achieves 99%+ accuracy on validation data
 - **CPU Optimized**: Runs entirely on CPU without GPU requirements
