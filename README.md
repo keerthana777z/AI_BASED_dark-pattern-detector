@@ -89,7 +89,7 @@ dark-pattern-detector/
 
 The model is trained on a comprehensive dataset of dark pattern examples covering multiple categories. The dataset includes real-world examples from various websites and applications.
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
