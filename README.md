@@ -1,78 +1,179 @@
-AI-Based Dark Pattern Detector for Web Content
-This project is a complete, end-to-end system that uses a fine-tuned BERT model to automatically detect and classify manipulative language ("dark patterns") on websites. The final application is an interactive web analyzer built with Streamlit that can scrape any given URL, analyze its text content in real-time, and generate a comprehensive report.
 
-🚀 Key Features
-End-to-End Analysis: Simply provide a URL, and the system handles the rest—from scraping to reporting.
+# 🕵️‍♂️ AI-Based Dark Pattern Detector for Web Content
 
-High-Accuracy AI Model: Utilizes a fine-tuned BERT model that achieves 97.55% accuracy in classifying dark patterns.
+This project is a complete, end-to-end system that uses a fine-tuned **BERT** model to automatically detect and classify manipulative language (“dark patterns”) on websites.  
 
-Real-Time Web Scraping: Uses Selenium to automatically extract all relevant text from a live webpage.
+The final application is an interactive web analyzer built with **Streamlit**, capable of scraping any URL, analyzing its text content in real time, and generating a comprehensive report.
 
-Interactive Dashboard: A user-friendly interface built with Streamlit that visualizes the analysis results.
+---
 
-Detailed Reporting: Generates a "Manipulation Score," a bar chart of detected categories, and a detailed table of the manipulative phrases found.
+## 🚀 Key Features
 
-🏛️ Project Architecture
-The project follows a complete pipeline from data preparation to live prediction. The offline phases involve preparing the dataset and training the model, while the online phase involves the live analysis in the Streamlit application.
+| Feature                        | Description                                                                                             |
+|----------------------------------|---------------------------------------------------------------------------------------------------------|
+| 🧠 **End-to-End Analysis**       | Provide a URL and the system handles everything — from scraping to reporting.                           |
+| 🤖 **High-Accuracy AI Model**   | Fine-tuned BERT model achieving **97.55%** accuracy.                                                    |
+| 🌐 **Real-Time Web Scraping**  | Uses Selenium to extract text content from live web pages.                                              |
+| 📊 **Interactive Dashboard**   | Streamlit interface that visualizes the analysis clearly.                                               |
+| 📝 **Detailed Reporting**      | Includes a *Manipulation Score*, category-wise bar chart, and table of manipulative phrases.             |
 
-(Note: You will need to export your draw.io diagram as a PNG/JPG, upload it to a site like Imgur, and paste the link here.)
+---
 
-📈 Model Performance
-The final BERT model was evaluated on a test set of 774 samples that it had never seen during training. The results demonstrate high performance and reliability.
+## 🏛️ Project Architecture
 
-Overall Accuracy: 97.55%
+The project follows a structured pipeline:
 
-Weighted F1-Score: 97.00%
+1. **Offline Phase**: Data preparation and BERT model fine-tuning.  
+2. **Online Phase**: Real-time text extraction, classification, and visualization.
 
-Detailed Classification Report
-The model performs exceptionally well on the most common categories. The lower scores for Forced Action and Sneaking are due to the very small number of examples (2 and 5, respectively) for those categories in the source dataset.
 
-                 precision    recall  f1-score   support
 
-    Forced Action       0.00      0.00      0.00         2
-     Misdirection       0.98      0.93      0.95        86
- Not Dark Pattern       0.96      0.98      0.97       236
-      Obstruction       1.00      1.00      1.00        11
-         Scarcity       0.99      1.00      0.99       219
-         Sneaking       0.50      0.20      0.29         5
-     Social Proof       1.00      1.00      1.00       125
-          Urgency       0.97      0.98      0.97        90
+```markdown
+![Project Architecture](https://your-architecture-image-link-here)
+```
 
-        accuracy                           0.98       774
-       macro avg       0.80      0.76      0.77       774
-    weighted avg       0.97      0.98      0.97       774
+---
 
-🛠️ How to Run This Project
-Follow these steps to set up and run the project on your local machine.
+## 📈 Model Performance
 
-1. Setup the Environment
-First, create and activate a Python virtual environment.
+The fine-tuned BERT model was evaluated on a test set of **774 unseen samples** and achieved exceptional performance.
 
+**Overall Accuracy:** 97.55%  
+**Weighted F1-Score:** 97.00%
+
+| Category            | Precision | Recall | F1-score | Support |
+|----------------------|-----------|--------|----------|---------|
+| Forced Action        | 0.00      | 0.00   | 0.00     | 2       |
+| Misdirection         | 0.98      | 0.93   | 0.95     | 86      |
+| Not Dark Pattern     | 0.96      | 0.98   | 0.97     | 236     |
+| Obstruction          | 1.00      | 1.00   | 1.00     | 11      |
+| Scarcity             | 0.99      | 1.00   | 0.99     | 219     |
+| Sneaking             | 0.50      | 0.20   | 0.29     | 5       |
+| Social Proof         | 1.00      | 1.00   | 1.00     | 125     |
+| Urgency              | 0.97      | 0.98   | 0.97     | 90      |
+| **Accuracy**         |           |        | **0.98** | 774     |
+| **Macro avg**        | **0.80**  | **0.76** | **0.77** | 774   |
+| **Weighted avg**     | **0.97**  | **0.98** | **0.97** | 774   |
+
+> ⚠️ Lower scores for Forced Action and Sneaking are due to limited training samples in those categories.
+
+---
+
+## 🛠️ How to Run This Project
+
+### 1️⃣ Setup the Environment
+
+Create and activate a Python virtual environment:
+
+```bash
 # Create the virtual environment
 python -m venv venv
 
-# Activate it (on Mac/Linux)
+# Activate it (Mac/Linux)
 source venv/bin/activate
+```
 
-Next, install all the required libraries from the requirements.txt file.
+Install required dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
-2. Prepare the Dataset
-Run the script to combine the raw data files into the final dataset used for training.
+---
 
+### 2️⃣ Prepare the Dataset
+
+Combine raw data files into the final dataset:
+
+```bash
 python create_full_dataset.py
+```
 
-This will generate the combined_dark_patterns_FULL.csv file.
+This will generate:
 
-3. Train the AI Model
-Run the main training script to fine-tune the BERT model. This step will take 15-45 minutes.
+```
+combined_dark_patterns_FULL.csv
+```
 
+---
+
+### 3️⃣ Train the AI Model
+
+Fine-tune the BERT model:
+
+```bash
 python dark_pattern_detector.py
+```
 
-This will create the final_dark_pattern_model folder containing the trained AI.
+This will create the folder:
 
-4. Launch the Web Application
-Once the model is trained, you can start the interactive web analyzer.
+```
+final_dark_pattern_model/
+```
 
+containing the trained model.
+
+---
+
+### 4️⃣ Launch the Web Application
+
+Run the Streamlit app:
+
+```bash
 streamlit run app.py
+```
+
+This will open the **interactive analyzer** in your browser.  
+Enter any URL to analyze manipulative language patterns in real-time.
+
+---
+
+## 📂 Project Structure
+
+```
+AI_BASED_dark-pattern-detector/
+│
+├── app.py                            # Streamlit web interface
+├── create_full_dataset.py            # Dataset preparation script
+├── dark_pattern_detector.py          # Model training script
+├── requirements.txt                  # Required Python libraries
+├── final_dark_pattern_model/         # Trained BERT model files
+├── combined_dark_patterns_FULL.csv   # Final dataset
+├── README.md                         # Project documentation
+└── ...
+```
+
+---
+
+## 🧠 Tech Stack
+
+- 🐍 **Python**  
+- 🤖 **BERT** (Hugging Face Transformers)  
+- 🕸️ **Selenium** for web scraping  
+- 📊 **Streamlit** for the dashboard  
+- 🧪 **Pandas**, **Scikit-learn**, **Matplotlib**
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to fork the repo and submit pull requests.
+
+---
+
+## 🪪 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ✨ Acknowledgements
+
+- [Hugging Face](https://huggingface.co/) — for the Transformer models  
+- [Streamlit](https://streamlit.io/) — for the easy-to-use UI framework  
+- [Selenium](https://www.selenium.dev/) — for reliable web scraping
+
+---
+##by
+https://github.com/keerthana777z
