@@ -1,118 +1,78 @@
-# 🕵️ Dark Pattern Detector
+AI-Based Dark Pattern Detector for Web Content
+This project is a complete, end-to-end system that uses a fine-tuned BERT model to automatically detect and classify manipulative language ("dark patterns") on websites. The final application is an interactive web analyzer built with Streamlit that can scrape any given URL, analyze its text content in real-time, and generate a comprehensive report.
 
-An AI-powered tool that uses BERT (Bidirectional Encoder Representations from Transformers) to detect and classify dark patterns in text. Dark patterns are manipulative design techniques used in websites and apps to trick users into unintended actions.
+🚀 Key Features
+End-to-End Analysis: Simply provide a URL, and the system handles the rest—from scraping to reporting.
 
-<<<<<<< HEAD
-## 🎯 Features
+High-Accuracy AI Model: Utilizes a fine-tuned BERT model that achieves 97.55% accuracy in classifying dark patterns.
 
-- **Multi-class Classification**: Detects various types of dark patterns including:
-=======
+Real-Time Web Scraping: Uses Selenium to automatically extract all relevant text from a live webpage.
 
-## 🎯 Features
+Interactive Dashboard: A user-friendly interface built with Streamlit that visualizes the analysis results.
 
-- **Multi-class Classification**: Detects various types of dark patterns including :
->>>>>>> origin/main
-  - **Scarcity**: "Only 2 items left in stock!"
-  - **Urgency**: "This offer expires in 5 minutes!"
-  - **Social Proof**: "500 people bought this today!"
-  - **Misdirection**: "No, I don't want to save money"
-<<<<<<< HEAD
-  - And more...
-=======
+Detailed Reporting: Generates a "Manipulation Score," a bar chart of detected categories, and a detailed table of the manipulative phrases found.
 
->>>>>>> origin/main
+🏛️ Project Architecture
+The project follows a complete pipeline from data preparation to live prediction. The offline phases involve preparing the dataset and training the model, while the online phase involves the live analysis in the Streamlit application.
 
-- **High Accuracy**: Achieves 99%+ accuracy on validation data
-- **CPU Optimized**: Runs entirely on CPU without GPU requirements
-- **Interactive Web App**: User-friendly Streamlit interface
-- **Real-time Analysis**: Instant dark pattern detection
+(Note: You will need to export your draw.io diagram as a PNG/JPG, upload it to a site like Imgur, and paste the link here.)
 
-## 🚀 Quick Start
+📈 Model Performance
+The final BERT model was evaluated on a test set of 774 samples that it had never seen during training. The results demonstrate high performance and reliability.
 
-### Prerequisites
+Overall Accuracy: 97.55%
 
-- Python 3.8+
-- pip
+Weighted F1-Score: 97.00%
 
-### Installation
+Detailed Classification Report
+The model performs exceptionally well on the most common categories. The lower scores for Forced Action and Sneaking are due to the very small number of examples (2 and 5, respectively) for those categories in the source dataset.
 
-1. Clone the repository:
-```bash
-git clone https://github.com/keerthana777z/dark-pattern-detector.git
-cd dark-pattern-detector
-```
+                 precision    recall  f1-score   support
 
-2. Create and activate a virtual environment:
-```bash
+    Forced Action       0.00      0.00      0.00         2
+     Misdirection       0.98      0.93      0.95        86
+ Not Dark Pattern       0.96      0.98      0.97       236
+      Obstruction       1.00      1.00      1.00        11
+         Scarcity       0.99      1.00      0.99       219
+         Sneaking       0.50      0.20      0.29         5
+     Social Proof       1.00      1.00      1.00       125
+          Urgency       0.97      0.98      0.97        90
+
+        accuracy                           0.98       774
+       macro avg       0.80      0.76      0.77       774
+    weighted avg       0.97      0.98      0.97       774
+
+🛠️ How to Run This Project
+Follow these steps to set up and run the project on your local machine.
+
+1. Setup the Environment
+First, create and activate a Python virtual environment.
+
+# Create the virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
 
-3. Install dependencies:
-```bash
+# Activate it (on Mac/Linux)
+source venv/bin/activate
+
+Next, install all the required libraries from the requirements.txt file.
+
 pip install -r requirements.txt
-```
 
-### Usage
+2. Prepare the Dataset
+Run the script to combine the raw data files into the final dataset used for training.
 
-#### Option 1: Web Interface (Recommended)
-```bash
-streamlit run app.py
-```
-Then open your browser to `http://localhost:8501`
+python create_full_dataset.py
 
-#### Option 2: Train Your Own Model
-```bash
+This will generate the combined_dark_patterns_FULL.csv file.
+
+3. Train the AI Model
+Run the main training script to fine-tune the BERT model. This step will take 15-45 minutes.
+
 python dark_pattern_detector.py
-```
 
-## 📊 Model Performance
+This will create the final_dark_pattern_model folder containing the trained AI.
 
-- **Accuracy**: 99.07%
-- **F1 Score**: 99.04%
-- **Precision**: 99.13%
-- **Recall**: 99.07%
+4. Launch the Web Application
+Once the model is trained, you can start the interactive web analyzer.
 
-## 🗂️ Project Structure
-
-```
-dark-pattern-detector/
-├── app.py                          # Streamlit web application
-├── dark_pattern_detector.py        # Model training script
-├── final_dark_pattern_model/       # Trained BERT model
-├── combined_dark_patterns_FULL.csv # Training dataset
-├── requirements.txt                # Python dependencies
-├── visualize.py                    # Data visualization tools
-├── prepare_data.py                 # Data preprocessing utilities
-└── README.md                       # This file
-```
-
-## 🔧 Technical Details
-
-- **Model**: BERT-base-uncased fine-tuned for sequence classification
-- **Framework**: PyTorch + Transformers (Hugging Face)
-- **Training**: 3 epochs with CPU optimization
-- **Text Processing**: Lowercase, HTML tag removal, punctuation cleaning
-- **Interface**: Streamlit for web deployment
-
-## 📈 Dataset
-
-The model is trained on a comprehensive dataset of dark pattern examples covering multiple categories. The dataset includes real-world examples from various websites and applications.
-
-<<<<<<< HEAD
-## 🤝 Contributing
-=======
-##  Contributing
->>>>>>> origin/main
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-##  Acknowledgments
-
-- Hugging Face Transformers library
-- Streamlit for the web interface
-- The research community working on dark pattern detection
+streamlit run app.py
