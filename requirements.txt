@@ -1,0 +1,18 @@
+# For web scraping and browser automation
+selenium
+beautifulsoup4
+webdriver-manager
+
+# For general data handling (we'll use this later)
+pandas
+<<<<<<< HEAD
+
+# For machine learning and NLP
+torch
+transformers>=4.21.0,<5.0.0
+tokenizers>=0.11.1,!=0.11.3,<0.14
+streamlit
+selenium
+webdriver-manager
+=======
+>>>>>>> origin/main
