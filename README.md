@@ -29,7 +29,7 @@ The project follows a structured pipeline:
 
 
 ```markdown
-![Project Architecture](https://your-architecture-image-link-here)
+![Project Architecture](https://github.com/keerthana777z/AI_BASED_dark-pattern-detector/blob/main/R.drawio.png)
 ```
 
 ---
