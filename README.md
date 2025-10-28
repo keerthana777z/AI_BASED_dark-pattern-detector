@@ -68,6 +68,14 @@ The project follows a structured pipeline:
 
 ---
 
+## UI
+<img width="1499" height="599" alt="Screenshot 2025-10-28 at 12 59 39 PM" src="https://github.com/user-attachments/assets/d733c40b-a3e2-4722-bb11-c3a53fd93c13" />
+
+<img width="1481" height="789" alt="Screenshot 2025-10-28 at 12 57 52 PM" src="https://github.com/user-attachments/assets/8ed8f29c-be4e-43dc-849b-78b685d37f27" />
+<img width="1479" height="751" alt="Screenshot 2025-10-28 at 12 58 11 PM" src="https://github.com/user-attachments/assets/1938589f-f555-4fc3-9910-f2d646ab0d28" />
+
+<img width="1463" height="547" alt="Screenshot 2025-10-28 at 12 58 34 PM" src="https://github.com/user-attachments/assets/7540eac3-0a40-428c-8339-35b6c6bbb846" />
+
 ## 📈 Model Performance
 
 The fine-tuned BERT model was evaluated on a test set of **774 unseen samples** and achieved exceptional performance:
